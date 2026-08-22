@@ -1,0 +1,6 @@
+{
+  "name": "Dynamic Order Tracker",
+  "description": "Order and deadline tracking application with Gantt-style progress bars, visual Red/Green status indicators, and interactive timeline controls.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

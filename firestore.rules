@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Connection test document
+    match /test/connection {
+      allow read, write: if true;
+    }
+
+    // Orders collection for production monitor
+    match /orders/{orderId} {
+      allow read: if true;
+      allow create: if request.resource.data.orderNumber is string
+                    && request.resource.data.description is string
+                    && request.resource.data.customerName is string;
+      allow update: if request.resource.data.orderNumber is string
+                    && request.resource.data.description is string;
+      allow delete: if true;
+    }
+  }
+}

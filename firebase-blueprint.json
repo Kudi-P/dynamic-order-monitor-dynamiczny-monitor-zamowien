@@ -1,0 +1,34 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "Zlecenie / zamówienie produkcyjne i logistyczne",
+      "type": "object",
+      "properties": {
+        "orderNumber": { "type": "string", "description": "Numer zlecenia / zamówienia" },
+        "description": { "type": "string", "description": "Opis lub nazwa detalu" },
+        "customerName": { "type": "string", "description": "Nazwa klienta" },
+        "customerDetails": { "type": "string", "description": "Dane kontaktowe klienta" },
+        "startDate": { "type": "string", "description": "Data rozpoczęcia (YYYY-MM-DD)" },
+        "endDate": { "type": "string", "description": "Termin zakończenia (YYYY-MM-DD)" },
+        "isCompleted": { "type": "boolean", "description": "Czy zlecenie jest ukończone" },
+        "completedDate": { "type": "string", "description": "Data ukończenia zlecenia" },
+        "priority": { "type": "string", "description": "Priorytet zlecenia (low/medium/high/urgent)" },
+        "amount": { "type": "number", "description": "Wartość zamówienia w PLN" },
+        "quantity": { "type": "number", "description": "Ilość sztuk" },
+        "category": { "type": "string", "description": "Kategoria zlecenia" },
+        "notes": { "type": "string", "description": "Notatki produkcyjne i uwagi" },
+        "driveAttachments": { "type": "array", "description": "Załączniki z Dysku Google" },
+        "createdAt": { "type": "string", "description": "Znacznik czasu utworzenia" },
+        "updatedAt": { "type": "string", "description": "Znacznik czasu ostatniej aktualizacji" }
+      },
+      "required": ["orderNumber", "description", "customerName", "startDate", "endDate", "isCompleted"]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Główna kolekcja zamówień synchronizowana w czasie rzeczywistym z bazą Cloud Firestore"
+    }
+  }
+}
